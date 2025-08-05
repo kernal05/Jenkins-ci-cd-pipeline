@@ -4,19 +4,32 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t my-app .'
+                echo 'Installing dependencies...'
+                sh 'npm install'
             }
         }
+
         stage('Test') {
             steps {
-                sh 'echo "Running tests..."'
-                sh 'node app-test.js'  // 
+                echo 'Running unit tests...'
+                sh 'npm test'
             }
         }
+
         stage('Deploy') {
             steps {
-                sh 'echo "Deploy step ( docker run or copy to server)"'
+                echo 'Starting the application...'
+                // Stop any existing app running on port 3000
+                sh 'pkill -f "node app.js" || true'  
+                // Start the app in background (you can use pm2 or nohup in real scenario)
+                sh 'nohup npm start &'
             }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline finished.'
         }
     }
 }
