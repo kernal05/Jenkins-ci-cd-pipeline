@@ -1,0 +1,17 @@
+Follow the below steps to exute jenkins pipeline
+Step 1: Pull the Jenkins Docker Image
+  # docker pull jenkins/jenkins:lts
+
+Step 2: Run Jenkins Container
+  # docker run \
+  -u root \
+  -d \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -v jenkins_home:/var/jenkins_home \
+  --name jenkins \
+   jenkins/jenkins:lts
+
+Step 3: Unlock Jenkins
+ # Open your browser:
+  http://localhost:8080
