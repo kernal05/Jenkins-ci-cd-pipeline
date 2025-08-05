@@ -1,6 +1,6 @@
 # Solar System NodeJS Application
 
-A simple HTML+MongoDB+NodeJS project to display Solar System and it's planets.
+A Jenkins CI/CD pipline base  HTML+MongoDB+NodeJS project to display Solar System and it's planets.
 
 ---
 ## Requirements
